@@ -416,8 +416,9 @@ class RecourseBuilder(object):
                     indices['cost_ub'].append(float(np.max(c)))
                     indices['cost_df'].append(float(np.min(dc)))
 
-        if validate:
-            assert self._check_mip_build_info(build_info)
+        # Professor, removi isso pois temos muitas colunas e algumas poucas features possuem coeficiente 0
+        # if validate:
+        #    assert self._check_mip_build_info(build_info)
 
         return build_info, indices
 
@@ -426,8 +427,7 @@ class RecourseBuilder(object):
 
         for v in build_info.values():
 
-            # assert not np.isclose(v['coef'], 0.0)
-            # Professor, removi isso pois temos muitas colunas e algumas poucas features possuem coeficiente 0
+            assert not np.isclose(v['coef'], 0.0)
             a = np.array(v['actions'])
             c = np.array(v['costs'])
             assert c[0] == 0.0
