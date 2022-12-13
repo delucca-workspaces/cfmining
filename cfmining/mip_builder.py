@@ -426,7 +426,8 @@ class RecourseBuilder(object):
 
         for v in build_info.values():
 
-            assert not np.isclose(v['coef'], 0.0)
+            # assert not np.isclose(v['coef'], 0.0)
+            # Professor, removi isso pois temos muitas colunas e algumas poucas features possuem coeficiente 0
             a = np.array(v['actions'])
             c = np.array(v['costs'])
             assert c[0] == 0.0
